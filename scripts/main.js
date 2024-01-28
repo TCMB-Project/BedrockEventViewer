@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, system } from "@minecraft/server";
 let config;
 let dynamic_property_ids = world.getDynamicPropertyIds();
 if (!dynamic_property_ids.includes('bev:config')) {
@@ -23,6 +23,17 @@ function print(event, ...info) {
         world.sendMessage(event);
     }
 }
+system.afterEvents.scriptEventReceive.subscribe((event) => {
+    switch (event.id) {
+        case 'bedrockeventviewer_config:output': {
+            const config_enum = ['log', 'chat'];
+            if (config_enum.includes(event.message)) {
+                config.output = event.message;
+                world.setDynamicProperty('bev:config', JSON.stringify(config));
+            }
+        }
+    }
+}, { namespaces: ['bedrockeventviewer_config'] });
 let afterEvents = world.afterEvents;
 afterEvents.buttonPush.subscribe(() => { print('buttonPush'); });
 afterEvents.entityDie.subscribe(() => { print('entityDie'); });

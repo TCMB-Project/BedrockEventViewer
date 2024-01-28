@@ -1,37 +1,43 @@
 {
-    "format_version": 2,
-    "header": {
-      "name": "Bedrock Event Viewer",
-      "description": "Displays events retrieved by the Script API in the chat or debug console.",
+  "format_version": 2,
+  "header": {
+    "name": "Bedrock Event Viewer",
+    "description": "Displays events retrieved by the Script API in the chat or debug console.",
+    "version": [1, 0, 0],
+    "uuid": "b2283bbe-67e8-4d74-829c-f723d2f67736",
+    "min_engine_version": [1, 13, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "description": "Bedrock Event Viewer behavior module",
       "version": [1, 0, 0],
-      "uuid": "b2283bbe-67e8-4d74-829c-f723d2f67736",
-      "min_engine_version": [1, 13, 0]
+      "uuid": "59f3e7c6-e108-4083-9432-b27a596cd104"
     },
-    "modules": [
-      {
-        "type": "data",
-        "description": "Bedrock Event Viewer behavior module",
-        "version": [1, 0, 0],
-        "uuid": "59f3e7c6-e108-4083-9432-b27a596cd104"
-      },
-      {
-        "type": "script",
-        "description": "BEV script",
-        "version": [1, 0, 0],
-        "uuid": "f7c6f8bd-7037-4cea-a021-d9a9fc75e589",
-        "language": "javascript",
-        "entry": "script/index.js"
-      }
+    {
+      "type": "script",
+      "description": "BEV script",
+      "language": "javascript",
+      "uuid": "f7c6f8bd-7037-4cea-a021-d9a9fc75e589",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.7.0"
+    }
+  ],
+  "metadata": {
+    "authors": [
+      "TCMB-Project",
+      "gensokyo-kenken"
     ],
-    "metadata": {
-      "authors": [
-        "TCMB-Project",
-        "gensokyo-kenken"
-      ],
-      "url": "https://github.com/TCMB-Project/BedrockEventViewer",
-      "license": "zlib license",
-      "generated_with": {
-        "TokaTools-Manifest-Generator": ["1.8.0"]
-      }
+    "url": "https://github.com/TCMB-Project/BedrockEventViewer",
+    "license": "zlib license",
+    "generated_with": {
+      "TokaTools-Manifest-Generator": ["1.8.0"]
     }
   }
+}
